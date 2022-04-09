@@ -4,7 +4,7 @@ const Loginpage = () => {
 
     return (
         <div className="Loginpage">
-            <h1>Book a doctor</h1>
+            <h1>Book My Doctor</h1>
             <div className="login">
             <form>
                 username: 
