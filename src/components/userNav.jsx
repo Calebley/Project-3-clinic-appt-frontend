@@ -13,7 +13,7 @@ const UserNav = () => {
             </div>
             <Menu theme="light">
                 <Menu.Item icon={<ProfileOutlined />}>
-                <Link to="/">Patient Data</Link>
+                <Link to="/profile">Patient Data</Link>
                 </Menu.Item>
                 <Menu.Item icon={<MedicineBoxOutlined />}>
                     <Link to="/clinic">Clinics</Link>

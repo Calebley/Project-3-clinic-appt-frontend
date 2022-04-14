@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Navigate } from "react-router-dom"
-// import { register }
+import { register } from "../actions/registerUser"
 
 const UserSignup = ({ isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ const UserSignup = ({ isUserAuthenticated }) => {
         password2: ""
     })
 
-    const { name, email, password, password2 } = formData
+    const { name, username, password, password2 } = formData
     const onChange = e => setFormData({
         ...formData,
         [e.target.name]: e.target.value
@@ -21,7 +21,7 @@ const UserSignup = ({ isUserAuthenticated }) => {
         if(password === password2) {
             alert("Password does not match")
         } else {
-            register({name, email, password })
+            register({name, username, password })
         }
     }
     if (isUserAuthenticated) {
@@ -34,8 +34,8 @@ const UserSignup = ({ isUserAuthenticated }) => {
             <div className="signupform">
                 <form onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
-                    <label className="label" for="exampleInputEmail">Email address:</label>
-                    <input type="email" className="form-control" placeholder="Enter your email address" name="email" value={email} onChange={e => onChange(e)}/>
+                    <label className="label" for="exampleInputEmail">Username:</label>
+                    <input type="email" className="form-control" placeholder="Enter your username" name="email" value={username} onChange={e => onChange(e)}/>
                     </div>
                     <div className="form-group">
                     <label className="label" for="exampleInputEmail1">Full name:</label>
