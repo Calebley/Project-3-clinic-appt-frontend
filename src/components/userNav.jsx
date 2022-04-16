@@ -1,6 +1,6 @@
 import React from "react"
 import { Menu, Typography } from "antd"
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { ProfileOutlined, MedicineBoxOutlined, ScheduleOutlined } from "@ant-design/icons"
 
 const UserNav = () => {
@@ -22,6 +22,7 @@ const UserNav = () => {
                     <Link to="/appointment">Appointments</Link>
                 </Menu.Item>
             </Menu>
+            <Outlet />
         </div>
     )
 }

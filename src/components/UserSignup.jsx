@@ -21,7 +21,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        if(password != password2) {
+        if(password !== password2) {
             alert("Password does not match")
         } else {
             register({name, username, password })
