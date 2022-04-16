@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { register } from "../actions/registerUser"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
-const UserSignup = ({ isUserAuthenticated }) => {
+const UserSignup = ({ register, isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -56,4 +58,13 @@ const UserSignup = ({ isUserAuthenticated }) => {
     )
 }
 
-export default UserSignup
+UserSignup.PropTypes = {
+    register: PropTypes.func.isRequired,
+    isUserAuthenticated: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = state => ({
+    isUserAuthenticated: state.authUser.isUserAuthenticated
+})
+
+export default connect(mapStateToProps, {register}) (UserSignup)
