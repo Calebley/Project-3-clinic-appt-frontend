@@ -27,7 +27,7 @@ const UserProfile = ({ createProfile, history }) => {
 
     return(
         <div className="container">
-            <h1>Add/Edit Personal Information</h1>
+            <h1>Add Personal Information</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <small>* = required field </small>
                 <div className="form-group">
