@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link, Navigate } from "react-router-dom"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { login } from "../actions/registerUser"
+import { login } from "../actions/authUser"
 
 
 const Loginpage = ({ login, isUserAuthenticated }) => {
