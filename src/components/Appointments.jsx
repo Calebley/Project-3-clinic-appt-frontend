@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
 
-const Clinics = () => {
+const Appointments = () => {
 
     return(
         <div>
-            <h1>Clinic Information</h1>
+            <h1>Appointments</h1>
         </div>
     )
 
 
 }
 
-export default Clinics
+export default Appointments

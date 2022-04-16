@@ -32,10 +32,11 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
     }
 
     return(
-        <div className="container">
+        <div className="signup-container">
             <h1>Sign Up page</h1>
             <div className="signupform">
                 <form onSubmit={e => onSubmit(e)}>
+                    <div className="signupinfo">
                     <div className="form-group">
                     <label className="label" for="exampleInputEmail">Username:</label>
                     <input type="username" className="form-control" placeholder="Enter your username" name="username" value={username} onChange={e => onChange(e)}/>
@@ -53,6 +54,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
                     <input type="password" className="form-control" placeholder="Enter password again" name="password2" value={password2} onChange={e => onChange(e)} />
                     </div>
                     <input type="submit" value="Sign up" />
+                    </div>
                 </form>
             </div>
         </div>

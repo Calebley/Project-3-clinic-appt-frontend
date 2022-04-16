@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux"
 import store from "./store"
-import { UserSignup, UserNav, UserProfile, Loginpage } from './components';
+import { UserSignup, UserNav, UserProfile, Loginpage, Clinics, Appointments } from './components';
 
 
 const rootElement = document.getElementById("root")
@@ -15,6 +15,8 @@ render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/clinic" element={<Clinics />} />
+          <Route path="/appointment" element={<Appointments />} />
         </Route>
         <Route path="/login" element={<Loginpage />} ></Route>
         <Route path="/signup" element={<UserSignup />}></Route>

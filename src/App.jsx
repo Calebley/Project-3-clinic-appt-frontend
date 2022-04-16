@@ -1,5 +1,6 @@
 import './App.css';
-import {Loginpage, UserNav, UserSignup }  from "./components"
+import {UserNav}  from "./components"
+import 'antd/dist/antd.css'
 
 function App() {
   return (

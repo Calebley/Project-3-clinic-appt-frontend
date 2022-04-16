@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.info-table, .signupinfo {
+position: absolute;
+left: 44%
+}
+
+.form-group {
+  text-align: justify;
+  padding: 1px;
+}
+
+.Loginpage, .signup-container {
+  text-align: center;
+}

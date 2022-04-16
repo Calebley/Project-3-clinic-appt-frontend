@@ -26,10 +26,11 @@ const UserProfile = ({ createProfile, history }) => {
     }
 
     return(
-        <div className="container">
+        <div className="user-container">
             <h1>Add Personal Information</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <small>* = required field </small>
+                <div className="info-table">
                 <div className="form-group">
                     Full name:<input type="text" placeholder="*Enter your full name" name="name" value={name} onChange={e => onChange(e)} required />
                 </div>
@@ -46,6 +47,7 @@ const UserProfile = ({ createProfile, history }) => {
                     Email:<input type="email" placeholder="*Enter your email" name="email" value={email} onChange={e => onChange(e)} required />
                 </div>
                 <input type="submit" value="submit" />
+                </div>
             </form>
         </div>
     )
