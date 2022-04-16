@@ -8,7 +8,7 @@ import PropTypes from "prop-types"
 const UserSignup = ({ register, isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
+        username: "",
         password: "",
         password2: ""
     })
@@ -21,7 +21,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        if(password === password2) {
+        if(password != password2) {
             alert("Password does not match")
         } else {
             register({name, username, password })
@@ -38,7 +38,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
                 <form onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
                     <label className="label" for="exampleInputEmail">Username:</label>
-                    <input type="email" className="form-control" placeholder="Enter your username" name="email" value={username} onChange={e => onChange(e)}/>
+                    <input type="username" className="form-control" placeholder="Enter your username" name="username" value={username} onChange={e => onChange(e)}/>
                     </div>
                     <div className="form-group">
                     <label className="label" for="exampleInputEmail1">Full name:</label>
@@ -50,7 +50,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
                     </div>
                     <div className="form-group">
                     <label className="label" for="exampleInputEmail1">Confirm password:</label>
-                    <input type="text" className="form-control" placeholder="Enter password again" name="password2" value={password2} onChange={e => onChange(e)} />
+                    <input type="password" className="form-control" placeholder="Enter password again" name="password2" value={password2} onChange={e => onChange(e)} />
                     </div>
                     <input type="submit" value="Sign up" />
                 </form>

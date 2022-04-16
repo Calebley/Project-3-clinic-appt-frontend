@@ -23,7 +23,7 @@ const Loginpage = ({ login, isUserAuthenticated }) => {
         login(username, password)
     }
     if(isUserAuthenticated) {
-        return <Navigate to="/" />
+        return <Navigate to="/homepage" />
     }
     return (
         <div className="Loginpage">
