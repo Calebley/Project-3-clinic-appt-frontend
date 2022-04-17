@@ -3,7 +3,7 @@ import urlcat from "urlcat"
 import setAuthToken from "../utils/setAuthToken"
 import { REGISTER_USER_SUCCESS, REGISTER_USER_FAIL, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL } from "./types"
 
-const BACKEND = process.env.REACT_APP_BACKEND
+const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
 //Load user
 export const loadUser = () => async dispatch => {
@@ -14,15 +14,15 @@ export const loadUser = () => async dispatch => {
 
 //Register user
 
-export const register = ({ name, username, password }) => async dispatch => {
+export const register = ({ username, email, password }) => async dispatch => {
     const config = {
         headers: {
             "Content-Type": "application/json"
         }
     }
-    const body = JSON.stringify({ name, username, password })
+    const body = JSON.stringify({ username, email, password })
     try {
-        const url = urlcat(BACKEND, "/api/users")
+        const url = urlcat(BACKEND, "/register")
         const res = await axios.post(url, body, config)
 
         dispatch({type: REGISTER_USER_SUCCESS,
@@ -42,15 +42,15 @@ export const register = ({ name, username, password }) => async dispatch => {
 }
 
 //Login User
-export const login = (username, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
     const config = {
         headers: {
             "Content-Type": "application/json"
         }
     }
-    const body = JSON.stringify({ username, password })
+    const body = JSON.stringify({ email, password })
     try {
-        const url = urlcat(BACKEND, "/api/authUser")
+        const url = urlcat(BACKEND, "/login")
         const res = await axios.post(url, body, config)
 
         dispatch({

@@ -7,13 +7,13 @@ import PropTypes from "prop-types"
 
 const UserSignup = ({ register, isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
-        name: "",
         username: "",
+        email: "",
         password: "",
         password2: ""
     })
 
-    const { name, username, password, password2 } = formData
+    const { username, email, password, password2 } = formData
     const onChange = e => setFormData({
         ...formData,
         [e.target.name]: e.target.value
@@ -24,7 +24,7 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
         if(password !== password2) {
             alert("Password does not match")
         } else {
-            register({name, username, password })
+            register({username, email, password })
         }
     }
     if (isUserAuthenticated) {
@@ -42,8 +42,8 @@ const UserSignup = ({ register, isUserAuthenticated }) => {
                     <input type="username" className="form-control" placeholder="Enter your username" name="username" value={username} onChange={e => onChange(e)}/>
                     </div>
                     <div className="form-group">
-                    <label className="label" for="exampleInputEmail1">Full name:</label>
-                    <input type="text" className="form-control" placeholder="Enter your full name" name="name" value={name} onChange={e => onChange(e)} />
+                    <label className="label" for="exampleInputEmail1">Email:</label>
+                    <input type="email" className="form-control" placeholder="Enter your email" name="email" value={email} onChange={e => onChange(e)} />
                     </div>
                     <div className="form-group">
                     <label className="label" for="exampleInputPassword1">Password:</label>

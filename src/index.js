@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux"
 import store from "./store"
-import { UserSignup, UserNav, UserProfile, Loginpage, Clinics, Appointments } from './components';
+import { UserSignup, CreateProfile, Loginpage, Clinics, IndividualClinic, Appointments, PrivateUser } from './components';
 
 
 const rootElement = document.getElementById("root")
@@ -13,9 +13,10 @@ render(
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/profile" element={<UserProfile />} />
+        <Route path="/" element={<PrivateUser><App /></PrivateUser>}>
+          <Route path="/profile" element={<CreateProfile />} />
           <Route path="/clinic" element={<Clinics />} />
+          <Route path="/clinic/:clinicId" element={<IndividualClinic />} />
           <Route path="/appointment" element={<Appointments />} />
         </Route>
         <Route path="/login" element={<Loginpage />} ></Route>

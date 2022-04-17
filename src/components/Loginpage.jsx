@@ -7,11 +7,11 @@ import { login } from "../actions/authUser"
 
 const Loginpage = ({ login, isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
-        username: "",
+        email: "",
         password: ""
     })
 
-    const { username, password } = formData
+    const { email, password } = formData
     
     const onChange = e => setFormData({
         ...formData,
@@ -20,7 +20,7 @@ const Loginpage = ({ login, isUserAuthenticated }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        login(username, password)
+        login(email, password)
     }
     if(isUserAuthenticated) {
         return <Navigate to="/" />
@@ -30,13 +30,13 @@ const Loginpage = ({ login, isUserAuthenticated }) => {
             <h1>Book My Doctor</h1>
             <div className="login">
             <form onSubmit={e => onSubmit(e)}>
-                username: 
+                email: 
                 <input
-                type="username"
+                type="emal"
                 className="form-control"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
+                placeholder="Enter your email"
+                name="email"
+                value={email}
                 onChange={e => onChange(e)}
                 required
                 />

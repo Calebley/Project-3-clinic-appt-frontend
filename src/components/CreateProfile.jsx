@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import {createProfile} from "../actions/profile"
 
-const UserProfile = ({ createProfile, history }) => {
+const CreateProfile = ({ createProfile, history }) => {
     const [formData, setFormData] = useState({
         name: "",
         DOB: "",
@@ -43,9 +43,6 @@ const UserProfile = ({ createProfile, history }) => {
                 <div className="form-group">
                     Contact:<input type="text" placeholder="*Enter your contact number" name="contact" value={contact} onChange={e => onChange(e)} required />
                 </div>
-                <div className="form-group">
-                    Email:<input type="email" placeholder="*Enter your email" name="email" value={email} onChange={e => onChange(e)} required />
-                </div>
                 <input type="submit" value="submit" />
                 </div>
             </form>
@@ -54,8 +51,8 @@ const UserProfile = ({ createProfile, history }) => {
 
 }
 
-UserProfile.propTypes = {
+CreateProfile.propTypes = {
     createProfile: PropTypes.func.isRequired
 }
 
-export default connect(null, {createProfile} ) (UserProfile)
+export default connect(null, {createProfile} ) (CreateProfile)
