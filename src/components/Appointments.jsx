@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 const Appointments = () => {
 
     return(
-        <div>
+        <div className="appt-container">
             <h1>Appointments</h1>
         </div>
     )

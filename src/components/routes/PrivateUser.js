@@ -3,9 +3,24 @@ import { connect } from "react-redux"
 import { Route, Navigate } from "react-router-dom"
 import PropTypes from "prop-types"
 
-const PrivateUser = ( { children }) => {
-    const [token, setToken] = localStorage.token
-    return token ? children : <Navigate to="/login" />
+const PrivateUser = ( { children, authUser: {isUserAuthenticated}, ...rest }) => {
+<Route
+    {...rest}
+    render = {props =>
+    !isUserAuthenticated ? (
+        <Navigate to="/login" />
+    ) : (
+        <children {...props} />
+    )
+    }
+    />
 }
 
-export default PrivateUser
+PrivateUser.propTypes = {
+    authUser: PropTypes.object.isRequired
+}
+const mapStateToProps = state => ({
+    authUser: state.authUser
+});
+
+export default connect(mapStateToProps)(PrivateUser);

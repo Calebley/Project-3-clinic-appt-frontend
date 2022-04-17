@@ -25,3 +25,7 @@ left: 44%
 .Loginpage, .signup-container {
   text-align: center;
 }
+
+.logo-container, .user-container, .clinic-container, .appt-container {
+  text-align: center;
+}

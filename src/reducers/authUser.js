@@ -10,7 +10,7 @@ import {
 } from "../actions/types"
 
 const initialState = {
-    token: localStorage.getItem("token"),
+    token: sessionStorage.getItem("token"),
     isUserAuthenticated: null,
     loadingUser: true,
     user: null
@@ -28,7 +28,7 @@ const authUser = (state = initialState, action) => {
             }
         case REGISTER_USER_SUCCESS:
         case LOGIN_USER_SUCCESS:
-            localStorage.setItem("token", payload.token)
+            sessionStorage.setItem("token", payload.token)
             return {
                 ...state,
                 ...payload,
@@ -37,7 +37,7 @@ const authUser = (state = initialState, action) => {
             }
         case REGISTER_USER_FAIL:
         case LOGIN_USER_FAIL:
-            localStorage.removeItem("token")
+            sessionStorage.removeItem("token")
             return {
                 ...state,
                 token: null,
@@ -48,7 +48,7 @@ const authUser = (state = initialState, action) => {
         case AUTH_USER_ERROR:
         case LOGOUT_USER:
         case DELETE_USER_ACCOUNT:
-            localStorage.removeItem("token")
+            sessionStorage.removeItem("token")
             return {
                 ...state,
                 token: null,

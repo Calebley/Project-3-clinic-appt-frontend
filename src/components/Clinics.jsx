@@ -9,7 +9,7 @@ const Clinics = () => {
     }, [getClinic])
 
     return(
-        <div>
+        <div className="clinic-container">
             <h1>Clinic Information</h1>
             <Link to={`/clinic/1`}>
             <Card
