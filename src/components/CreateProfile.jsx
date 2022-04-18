@@ -8,12 +8,11 @@ const CreateProfile = ({ createProfile, history }) => {
         name: "",
         DOB: "",
         gender: "",
-        contact: "",
-        email: ""
+        contact: ""
     })
 
     const {
-        name, DOB, gender, contact, email
+        name, DOB, gender, contact
     } = formData
 
     const onChange = e => setFormData({
