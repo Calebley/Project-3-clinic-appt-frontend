@@ -16,7 +16,7 @@ const UserNav = () => {
                 <Link to="/profile">Patient Data</Link>
                 </Menu.Item>
                 <Menu.Item icon={<MedicineBoxOutlined />}>
-                    <Link to="/clinic">Clinics</Link>
+                    <Link to="/clinics">Clinics</Link>
                 </Menu.Item>
                 <Menu.Item icon={<ScheduleOutlined />}>
                     <Link to="/appointment">Appointments</Link>
