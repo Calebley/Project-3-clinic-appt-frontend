@@ -5,7 +5,7 @@ import {connect} from "react-redux"
 import { getClinicById } from "../actions/clinicInfo";
 import store from "../store"
 import { Clinics } from ".";
-import { UserOutlined, ReadOutlined, SearchOutlined  } from "@ant-design/icons";
+import { UserOutlined, ReadOutlined, SearchOutlined, ShopOutlined  } from "@ant-design/icons";
 import { Col, Row, Typography, Select } from 'antd';
 
 const { Text } = Typography
@@ -21,7 +21,8 @@ const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
     const info = [
         {title: "Doctor", value: `${clinicById.doctorname}`, icon: <UserOutlined />},
         {title: "Education", value: `${clinicById.education}`, icon: <ReadOutlined />},
-        {title: "Specialisation", value: `${clinicById.specialisation}`, icon: <SearchOutlined />}
+        {title: "Specialisation", value: `${clinicById.specialisation}`, icon: <SearchOutlined />},
+        {title: "Address", value: `${clinicById.address}`, icon: <ShopOutlined />}
     ]
 
     return(
