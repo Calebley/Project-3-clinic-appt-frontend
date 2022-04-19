@@ -35,3 +35,5 @@ export const createProfile = (formData, history, edit=false) => async dispatch =
         })
     }
 }
+
+//Get profile

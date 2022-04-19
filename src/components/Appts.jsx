@@ -5,7 +5,7 @@ import { getAppointments } from "../actions/appointments"
 import AppointmentItems from "./ApptItems"
 
 
-const Appointments = ({getAppointments, authUser: {user}, appointment: {appointments}}) => {
+const Appointments = ({getAppointments, appointment: {appointments}}) => {
     useEffect(() => {
         getAppointments()
     }, [getAppointments])
@@ -14,7 +14,6 @@ const Appointments = ({getAppointments, authUser: {user}, appointment: {appointm
         <div className="appt-container">
             <div className="appt-header">
             <h1>Appointments</h1>
-            <h2>{user && (user.name.split(" ")[0].toLocaleUpperCase())}'s appointments</h2>
             </div>
             <div class="appt-details">
                 <br />
@@ -33,12 +32,10 @@ const Appointments = ({getAppointments, authUser: {user}, appointment: {appointm
 
 Appointments.propTypes = {
     getAppointments: PropTypes.func.isRequired,
-    authUser: PropTypes.object.isRequired,
     appointment: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    authUser: state.authUser,
     appointment: state.appointment
 })
 

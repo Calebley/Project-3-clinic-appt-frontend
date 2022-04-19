@@ -1,6 +1,6 @@
 import axios from "axios"
 import urlcat from "urlcat"
-import { ADD_APPOINTMENTS, APPOINTMENT_ERROR, GET_APPOINTMENTS, UPDATE_APPOINTMENTS } from "./types"
+import { ADD_APPOINTMENTS, APPOINTMENT_ERROR, GET_APPOINTMENTS, GET_APPOINTMENTS_BY_ID, UPDATE_APPOINTMENTS } from "./types"
 
 
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
@@ -13,7 +13,7 @@ export const addAppointment = (clinicId, formData, history) => async dispatch =>
         }
     }
     try {
-        const url = urlcat(BACKEND, `/api/appointment/${clinicId}`)
+        const url = urlcat(BACKEND, `/appt/1`)
         const res = await axios.post(url, formData, config)
         dispatch({
             type: ADD_APPOINTMENTS,
@@ -28,6 +28,7 @@ export const addAppointment = (clinicId, formData, history) => async dispatch =>
         })
     }
 }
+
 
 //Get appointments
 
@@ -58,6 +59,24 @@ export const deleteAppointment = (appointmentId) => async dispatch => {
             payload: res.data
         })
         dispatch(alert("Appointment successfully removed"))
+    } catch (err) {
+        dispatch({
+            type: APPOINTMENT_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
+
+//Get current appointment
+
+export const getAppointmentById = (appointmentId) => async dispatch => {
+    try {
+        const url = urlcat(BACKEND, `/api/authUser/${appointmentId}`)
+        const res = await axios.get(url)
+        dispatch({
+            type: GET_APPOINTMENTS_BY_ID,
+            payload: res.data
+        })
     } catch (err) {
         dispatch({
             type: APPOINTMENT_ERROR,

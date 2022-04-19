@@ -6,11 +6,22 @@ import { addAppointment } from "../actions/appointments"
 
 const BookAppt = ({IndividualClinic, clinicId, history, addAppointment}) => {
     const [formData, setFormData] = useState({
+        patientname:"",
+        dateofbirth:"",
+        gender:"",
+        email:"",
         date:"",
         description:""
     })
 
-    const {date, description} = formData
+    const {
+        patientname,
+        dateofbirth,
+        gender,
+        email,
+        date,
+        description
+    } = formData
 
     const onChange = e => setFormData({
         ...formData,
@@ -26,6 +37,22 @@ return(
              e.preventDefault()
              addAppointment(clinicId, formData, history)
          }}>
+             Patient name:
+             <div className="form-group">
+                 <input type="text" name="patientname" value={patientname} onChange={e => onChange(e)} />
+             </div>
+             Date of birth:
+             <div className="form-group">
+                 <input type="date" name="dateofbirth" value={dateofbirth} onChange={e => onChange(e)} />
+             </div>
+             Gender:
+             <div className="form-group">
+                 <input type="text" name="gender" placeholder="M or F" value={gender} onChange={e => onChange(e)} />
+             </div>
+             Email:
+             <div className="form-group">
+                 <input type="email" name="email" value={email} onChange={e => onChange(e)} />
+             </div>
              Date:
              <div className="form-group">
                  <input type="date" name="date" value={date} onChange={e => onChange(e)} />

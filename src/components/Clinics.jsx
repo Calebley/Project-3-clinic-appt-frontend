@@ -2,25 +2,25 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Card, Row, Col, Input } from "antd"
 import { getClinic } from "../actions/clinicInfo"
+import ClinicItems from "./ClinicItems"
 
-const Clinics = () => {
+const Clinics = ({getClinic, clinic: {clinics}}) => {
     useEffect(() => {
         getClinic()
     }, [getClinic])
 
     return(
         <div className="clinic-container">
-            <h1>Clinic Information</h1>
-            <Link to={`/clinic/1`}>
-            <Card
-                title="Clinic 1"
-                hoverable
-            >
-                <p>Clinic Name:</p>
-                <p>Clinic Address:</p>
-                <p>Doctors Available:</p>
-            </Card>
-            </Link>
+            <div className="clinic-heading">
+                <h1>Clinic Information</h1>
+            </div>
+            {
+                clinics != null ? (
+                    clinics.map(clinic => (
+                        <Card title="clinic" hoverable><ClinicItems key={clinic._id} clinic={clinic} /></Card>
+                    ))
+                ) : <h4>No profiles found</h4>
+            }
         </div>
     )
 }

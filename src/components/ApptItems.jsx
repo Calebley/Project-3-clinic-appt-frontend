@@ -1,8 +1,9 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import Moment from "react-moment"
-import { deleteAppointment } from "../actions/appointments"
+import { deleteAppointment, getAppointmentById } from "../actions/appointments"
 
 const AppointmentItems = ({ appointment, deleteAppointment }) => {
     const appointments = appointment.map(appt => (
@@ -11,6 +12,7 @@ const AppointmentItems = ({ appointment, deleteAppointment }) => {
             <p><strong>Booking id:</strong> {appt.bookingId}</p>
             <p><strong>Description:</strong>{appt.description}</p>
             <button onClick={() => deleteAppointment(appt._id)} type="button">Cancel</button>
+            <Link to="/editappt"><button onClick={() => getAppointmentById(appt._id)} type="button">Edit</button></Link>
         </div>
     ))
     return (
