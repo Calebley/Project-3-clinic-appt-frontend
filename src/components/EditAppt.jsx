@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { addAppointment, getAppointmentById } from "../actions/appointments"
 
-const EditAppt = ({user: {user}, IndividualClinic, clinicId, history, addAppointment, getAppointmentById}) => {
+const EditAppt = ({appt: {appt}, IndividualClinic, clinicId, history, addAppointment, getAppointmentById}) => {
     const [formData, setFormData] = useState({
         patientname:"",
-        age:"",
+        dateofbirth:"",
+        gender:"",
+        email:"",
         date:"",
         description:""
     })
@@ -12,16 +14,20 @@ const EditAppt = ({user: {user}, IndividualClinic, clinicId, history, addAppoint
     useEffect(() => {
         getAppointmentById()
         setFormData({
-            patientname: user.name,
-            age: user.age,
-            date: user.date,
-            description: user.description
+            patientname: appt.name,
+            dateofbirth: appt.dateofbirth,
+            gender: appt.gender,
+            email: appt.email,
+            date: appt.date,
+            description: appt.description
         })
     },[getAppointmentById])
 
     const {
         patientname,
-        age,
+        dateofbirth,
+        gender,
+        email,
         date,
         description
     } = formData
@@ -46,9 +52,17 @@ const EditAppt = ({user: {user}, IndividualClinic, clinicId, history, addAppoint
              <div className="form-group">
                  <input type="text" name="patientname" value={patientname} onChange={e => onChange(e)} />
              </div>
-             Age:
+             Date of birth:
              <div className="form-group">
-                 <input type="text" name="age" value={age} onChange={e => onChange(e)} />
+                 <input type="date" name="dateofbirth" value={dateofbirth} onChange={e => onChange(e)} />
+             </div>
+             Gender:
+             <div className="form-group">
+                 <input type="text" name="gender" value={gender} onChange={e => onChange(e)} />
+             </div>
+             Email:
+             <div className="form-group">
+                 <input type="email" name="email" value={email} onChange={e => onChange(e)} />
              </div>
              Date:
              <div className="form-group">
