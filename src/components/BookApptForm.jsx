@@ -19,7 +19,7 @@ const BookApptForm = ({
                 {
                     clinicById !== null ?
                     (
-                        <BookAppt clinic={clinicById.clinic} history={history} clinicId={clinicById.clinic._id} />
+                        <BookAppt individualclinic={clinicById.clinic} history={history} clinicId={clinicById.clinic._id} />
                     ) : (
                         ""
                     )

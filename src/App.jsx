@@ -31,7 +31,7 @@ function App() {
         <Route path="/signup" element={<UserSignup />}></Route>
         <Route path="/createprofile" element={<CreateProfile />}></Route>
         <Route path="/editappt" element={<EditAppt />}></Route>
-        <Route path="/makeappt/:id" element={<BookAppt />}></Route>
+        <Route path="/makeappt/:id" element={<BookApptForm />}></Route>
         </Routes>
       </Provider>
     </BrowserRouter>

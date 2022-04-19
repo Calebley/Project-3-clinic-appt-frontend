@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { addAppointment } from "../actions/appointments"
 
-const BookAppt = ({IndividualClinic, clinicId, history, addAppointment}) => {
+const BookAppt = ({individualclinic, clinicId, history, addAppointment}) => {
     const [formData, setFormData] = useState({
         patientname:"",
         dateofbirth:"",
@@ -31,7 +31,7 @@ return(
     <div className="booking-container">
          <h1>Book Appointment</h1>
          <div className="appt-clinic">
-             <p className="clinic">Clinic 1</p>
+             <p className="clinic">{individualclinic.name}</p>
          </div>
          <form onSubmit={e => {
              e.preventDefault()
