@@ -5,7 +5,10 @@ import {connect} from "react-redux"
 import { getClinicById } from "../actions/clinicInfo";
 import store from "../store"
 import { Clinics } from ".";
+import { UserOutlined, ReadOutlined, SearchOutlined  } from "@ant-design/icons";
+import { Col, Row, Typography, Select } from 'antd';
 
+const { Text } = Typography
 const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
     const { clinicId } = useParams()
 
@@ -15,13 +18,26 @@ const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
 
     console.log(store.getState())
 
+    const info = [
+        {title: "Doctor", value: `${clinicById.doctorname}`, icon: <UserOutlined />},
+        {title: "Education", value: `${clinicById.education}`, icon: <ReadOutlined />},
+        {title: "Specialisation", value: `${clinicById.specialisation}`, icon: <SearchOutlined />}
+    ]
+
     return(
 
         <div className="clinic-info">
             <h1>{clinicById.name}</h1>
-            <p>{clinicById.doctorname}</p>
-            <p>{clinicById.education}</p>
-            <p>{clinicById.specialisation}</p>
+            {info.map(({icon, title, value}) => 
+            <Col className="clinic-info">
+                <Text>{icon} </Text>
+                <Text><strong>{title}: </strong></Text>
+                <Text>{value}</Text>
+            </Col>
+            )}
+            {/* <p icon={<UserOutlined />}><strong>Doctor:</strong> {clinicById.doctorname}</p>
+            <p><strong>Education:</strong> {clinicById.education}</p>
+            <p><strong>Specialisation:</strong> {clinicById.specialisation}</p> */}
             <p><Link to={`/makeappt/${clinicById._id}`}>Book appointment</Link></p>
         </div>
 
