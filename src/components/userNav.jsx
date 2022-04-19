@@ -26,7 +26,7 @@ const UserNav = () => {
                             Book a doctor
                         </Typography.Title>
                     </div>
-                    <Menu theme="dark">
+                    <Menu theme="light">
                         {/* <Menu.Item icon={<ProfileOutlined />}>
                             <Link to="/profile">Patient Data</Link>
                         </Menu.Item> */}

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.css';
 import "antd/dist/antd.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -8,7 +8,6 @@ import { UserNav, UserSignup, ProfilePage, CreateProfile, Loginpage, Clinics, In
 //Redux
 import { Provider } from "react-redux"
 import store from "./store"
-import { loadUser } from "./actions/authUser"
 import setAuthToken from './utils/setAuthToken';
 
 if(sessionStorage.token) {
