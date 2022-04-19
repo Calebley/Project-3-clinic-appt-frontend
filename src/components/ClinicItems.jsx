@@ -6,7 +6,7 @@ import {connect} from "react-redux"
 const ClinicItems = ({
     clinic: {
         _id,
-        clinicname,
+        name,
         doctorname,
         address,
         education,
@@ -16,7 +16,7 @@ const ClinicItems = ({
     return(
         <div className="clinics">
             <div className="clinic-desc">
-                <h2><strong>{clinicname}</strong></h2>
+                <h2><strong>{name}</strong></h2>
                 <p><strong>{address}</strong></p>
                 <p><strong>{doctorname}</strong></p>
             </div>

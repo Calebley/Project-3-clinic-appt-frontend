@@ -1,22 +1,30 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import { getClinicById } from "../actions/clinicInfo";
+import store from "../store"
+import { Clinics } from ".";
 
-const IndividualClinic = ({getClinicById, clinic: {clinicById}, match}) => {
+const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
+    const { clinicId } = useParams()
+
     useEffect(() => {
-        getClinicById(match.params.id)
-    }, [getClinicById, match.params.id])
+        getClinicById(clinicId)
+    }, [getClinicById, clinicId])
+
+    console.log(store.getState())
 
     return(
+
         <div className="clinic-info">
-            <h1>{clinicById.clinic.clinicname}</h1>
-            <p>{clinicById.clinic.doctorname}</p>
-            <p>{clinicById.clinic.education}</p>
-            <p>{clinicById.clinic.specialisation}</p>
-            <p><Link to={`/makeappt/${clinicById.clinic._id}`}>Book appointment</Link></p>
+            <h1>{clinicById.name}</h1>
+            <p>{clinicById.doctorname}</p>
+            <p>{clinicById.education}</p>
+            <p>{clinicById.specialisation}</p>
+            <p><Link to={`/makeappt/${clinicById._id}`}>Book appointment</Link></p>
         </div>
+
     )
 }
 

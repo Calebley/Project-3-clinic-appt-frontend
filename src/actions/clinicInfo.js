@@ -7,15 +7,16 @@ const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
 //Get all clinic info
 
-export const getClinic = () => async dispatch => {
+export const getClinics = () => async dispatch => {
     try {
-        const url = urlcat(BACKEND, "/api/clinic")
+        const url = urlcat(BACKEND, "/clinic")
         const res = await axios.get(url)
 
         dispatch({
             type: GET_CLINICS,
             payload: res.data
         })
+        console.log("data has been received")
     } catch (err) {
         dispatch({
             type: CLINIC_ERROR,
@@ -28,7 +29,7 @@ export const getClinic = () => async dispatch => {
 
 export const getClinicById = clinicId => async dispatch => {
     try {
-        const url = urlcat(BACKEND, `/api/clinic/${clinicId}`)
+        const url = urlcat(BACKEND, `/clinic/${clinicId}`)
         const res = await axios.get(url)
         dispatch({
             type: GET_CLINIC_BY_ID,

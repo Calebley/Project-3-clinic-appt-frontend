@@ -1,4 +1,6 @@
 import React, { useEffect } from "react"
+import PropTypes from "prop-types"
+import {connect} from "react-redux"
 import BookAppt from "./BookAppt"
 import { getClinicById } from "../actions/clinicInfo"
 
@@ -27,6 +29,10 @@ const BookApptForm = ({
             </div>
         </div>
     )
+}
+
+BookApptForm.propTypes = {
+    getClinicById: PropTypes.func.isRequired
 }
 
 export default BookApptForm
