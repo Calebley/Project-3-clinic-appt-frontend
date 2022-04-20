@@ -23,10 +23,12 @@ console.log(store.getState())
                 <h1>Clinic Information</h1>
             </div>
             <br />
+            <div className="clinic-desc-container">
+                <Row gutter={[32]} className="clinic-card-container">
             {
                 clinics != null ? (
                     clinics.map(clinic => (
-                        <Col xs={24} sm={12} lg={6} className="clinic-card" key={clinic._id}>
+                        <Col span={8} className="clinic-card" key={clinic._id}>
                             <Link to={`/clinic/${clinic._id}`}>
                             <Card hoverable >
                                 <p>{clinic.name}</p>
@@ -39,6 +41,8 @@ console.log(store.getState())
                     ))
                 ) : <h4>No profiles found</h4>
             }
+            </Row>
+            </div>
         </div>
     )
 }

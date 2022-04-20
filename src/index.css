@@ -26,10 +26,15 @@ left: 44%
   text-align: center;
 }
 
-.logo-container, .user-container, .clinic-container, .appt-container, .profile-container {
+.logo-container, .user-container, .clinic-container, .clinic-info, .appt-container, .profile-container {
   text-align: center;
 }
 
-.clinic-container {
-  align-items: center;
+.clinic-card-container {
+min-height: 65vh;
+}
+
+.clinic-card {
+  min-width: 250px;
+  width: 35px
 }
