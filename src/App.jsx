@@ -22,14 +22,12 @@ function App() {
       <Provider store={store}>
         <Routes>
         <Route path="/" element={<UserNav />}>
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/clinics" element={<Clinics />} />
           <Route path="/clinic/:clinicId" element={<IndividualClinic />} />
           <Route path="/appointment" element={<Appointments />} />
         </Route>
         <Route path="/login" element={<Loginpage />} ></Route>
         <Route path="/signup" element={<UserSignup />}></Route>
-        <Route path="/createprofile" element={<CreateProfile />}></Route>
         <Route path="/editappt" element={<EditAppt />}></Route>
         <Route path="/makeappt/:id" element={<BookApptForm />}></Route>
         </Routes>
