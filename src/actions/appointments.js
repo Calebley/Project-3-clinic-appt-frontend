@@ -13,7 +13,7 @@ export const addAppointment = (clinicId, formData, history) => async dispatch =>
         }
     }
     try {
-        const url = urlcat(BACKEND, `/appt/1`)
+        const url = urlcat(BACKEND, `/appt/${clinicId}`)
         const res = await axios.post(url, formData, config)
         dispatch({
             type: ADD_APPOINTMENTS,
