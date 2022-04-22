@@ -6,26 +6,23 @@ import { ADD_APPOINTMENTS, APPOINTMENT_ERROR, GET_APPOINTMENTS, GET_APPOINTMENTS
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 //Add appointment
 
-export const addAppointment = (clinicId, formData, history) => async dispatch => {
+export const addAppointment = (clinicid, userid, formData) => async dispatch => {
+    try {
     const config = {
         headers: {
             "Content-Type": "application/json"
         }
     }
-    try {
-        const url = urlcat(BACKEND, `/appt/${clinicId}`)
+        const url = urlcat(BACKEND, `/appt/${clinicid}/${userid}`)
         const res = await axios.post(url, formData, config)
+        console.log(url)
         dispatch({
             type: ADD_APPOINTMENTS,
             payload: res.data
         })
         dispatch(alert("Appointment successfully booked"))
-        history.push("/appointment")
     } catch (err) {
-        dispatch({
-            type: APPOINTMENT_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        })
+        console.log(err)
     }
 }
 

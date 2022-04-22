@@ -7,9 +7,9 @@ const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
 //Load user
 export const loadUser = () => async dispatch => {
-    if(localStorage.token) {
-        setAuthToken(localStorage.token)
-    }
+    // if(sessionStorage.token) {
+    //     setAuthToken(sessionStorage.token)
+    // }
     try {
         const url = urlcat(BACKEND)
         const res = await axios.get(BACKEND)

@@ -9,7 +9,7 @@ import { UserOutlined, ReadOutlined, SearchOutlined, ShopOutlined  } from "@ant-
 import { Col, Row, Typography, Select } from 'antd';
 
 const { Text } = Typography
-const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
+const IndividualClinic = ({getClinicById, clinic: {clinicById}, authUser: {sessUser}}) => {
     const { clinicId } = useParams()
 
     useEffect(() => {
@@ -17,6 +17,7 @@ const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
     }, [getClinicById, clinicId])
 
     console.log(store.getState())
+    console.log(clinicId)
 
     const info = [
         {title: "Doctor", value: `${clinicById.doctorname}`, icon: <UserOutlined />},
@@ -39,7 +40,7 @@ const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
             {/* <p icon={<UserOutlined />}><strong>Doctor:</strong> {clinicById.doctorname}</p>
             <p><strong>Education:</strong> {clinicById.education}</p>
             <p><strong>Specialisation:</strong> {clinicById.specialisation}</p> */}
-            <p><Link to={`/makeappt/${clinicById._id}`}>Book appointment</Link></p>
+            <p><Link to={`/appt/${clinicById._id}/${sessUser.id}`}>Book appointment</Link></p>
         </div>
 
     )
@@ -47,11 +48,13 @@ const IndividualClinic = ({getClinicById, clinic: {clinicById}}) => {
 
 IndividualClinic.propTypes = {
     getClinicById: PropTypes.func.isRequired,
-    clinic: PropTypes.object.isRequired
+    clinic: PropTypes.object.isRequired,
+    authUser: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    clinic: state.clinic
+    clinic: state.clinic,
+    authUser: state.authUser
 })
 
 export default connect(mapStateToProps, {getClinicById}) (IndividualClinic)

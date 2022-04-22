@@ -10,7 +10,6 @@ import {
 } from "../actions/types"
 
 const initialState = {
-    token: sessionStorage.getItem("token"),
     isUserAuthenticated: null,
     loadingUser: true,
     user: null
@@ -33,7 +32,7 @@ const authUser = (state = initialState, action) => {
                 ...state,
                 ...payload,
                 isUserAuthenticated: true,
-                loadingUser: false
+                loadingUser: false,
             }
         case REGISTER_USER_FAIL:
         case LOGIN_USER_FAIL:

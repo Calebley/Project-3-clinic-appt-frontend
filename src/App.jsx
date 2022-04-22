@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.css';
 import "antd/dist/antd.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -9,13 +9,9 @@ import { UserNav, UserSignup, ProfilePage, CreateProfile, Loginpage, Clinics, In
 import { Provider } from "react-redux"
 import store from "./store"
 import setAuthToken from './utils/setAuthToken';
-
-if(sessionStorage.token) {
-  setAuthToken(sessionStorage.token)
-}
+import { loadUser } from './actions/authUser';
 
 function App() {
-
 
   return (
     <BrowserRouter>
@@ -29,7 +25,7 @@ function App() {
         <Route path="/login" element={<Loginpage />} ></Route>
         <Route path="/signup" element={<UserSignup />}></Route>
         <Route path="/editappt" element={<EditAppt />}></Route>
-        <Route path="/makeappt/:id" element={<BookApptForm />}></Route>
+        <Route path="/appt/:clinicid/:userid" element={<BookAppt />}></Route>
         </Routes>
       </Provider>
     </BrowserRouter>

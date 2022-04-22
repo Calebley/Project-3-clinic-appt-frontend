@@ -6,16 +6,27 @@ import { getClinics } from "../actions/clinicInfo"
 import ClinicItems from "./ClinicItems"
 import {connect} from "react-redux"
 import store from "../store"
+import clinic from "../reducers/clinic"
+import urlcat from "urlcat"
 
+const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
-const Clinics = ({getClinics, clinic: {clinics}}) => {
+const Clinics = () => {
+    const [clinics, setClinics] = useState([])
     
-
     useEffect(() => {
-        getClinics()
-    }, [getClinics])
+        fetch(urlcat(BACKEND, "/clinic"))
+        .then((response) => response.json())
+        .then((data) => setClinics(data))
+    }, [])
 
-console.log(store.getState())
+
+    // useEffect(() => {
+    //     getClinics()
+        
+    // }, [getClinics])
+
+console.log(clinics)
     return(
         
         <div className="clinic-container">
@@ -23,6 +34,7 @@ console.log(store.getState())
                 <h1>Clinic Information</h1>
             </div>
             <br />
+   
             <div className="clinic-desc-container">
                 <Row gutter={[32]} className="clinic-card-container">
             {
@@ -34,6 +46,7 @@ console.log(store.getState())
                                 <p>{clinic.name}</p>
                                 <p>{clinic.address}</p>
                                 <p>{clinic.doctorname}</p>
+                                <p><small>Click for more details</small></p>
                             </Card>
                             </Link>
                         </Col>

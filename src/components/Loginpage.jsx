@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { login } from "../actions/authUser"
+import store from "../store"
 
 
 const Loginpage = ({ login, isUserAuthenticated }) => {
@@ -25,6 +26,7 @@ const Loginpage = ({ login, isUserAuthenticated }) => {
     if(isUserAuthenticated) {
         return <Navigate to="/" />
     }
+    console.log(store.getState())
     return (
         <div className="Loginpage">
             <h1>Book My Doctor</h1>

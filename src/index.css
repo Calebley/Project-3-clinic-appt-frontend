@@ -30,3 +30,10 @@ left: 44%
   text-align: center;
 }
 
+.booking-container, .form-group {
+  text-align: center;
+  align-self: center;
+  padding: 1px
+}
+
+
