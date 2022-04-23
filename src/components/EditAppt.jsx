@@ -129,7 +129,6 @@ const EditAppt = () => {
              </div>
              <div className="form-group">
                  <textarea placeholder="Illness description" name="description" value={description} onChange={e => onChange(e)} ></textarea>
-                 <small className="form-text">Tell us about the illness</small>
              </div>
              <input type="submit" value="Submit" />
             </form>

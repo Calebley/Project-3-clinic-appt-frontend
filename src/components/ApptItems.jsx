@@ -33,7 +33,7 @@ const AppointmentItems = ({appointment}) => {
         <Row gutter={[32]} className="clinic-card-container">
         <Col span={8} key={appt._id} className="appt-items-container">
             <Card hoverable>
-            <p><strong>Date:</strong> <Moment format="DD/MM/YYYY">{appt.date}</Moment></p>
+            <p><strong>Appointment date:</strong> <Moment format="DD/MM/YYYY">{appt.date}</Moment></p>
             <p><strong>Booking id:</strong> {appt.bookingId}</p>
             <p><strong>Description:</strong>{appt.description}</p>
             <input onClick={() => handleDelete(appt._id)} type="button" value="Cancel" style={{ color: "red"}} />
