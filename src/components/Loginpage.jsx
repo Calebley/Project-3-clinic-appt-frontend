@@ -5,7 +5,6 @@ import { connect } from "react-redux"
 import { login } from "../actions/authUser"
 import store from "../store"
 
-
 const Loginpage = ({ login, isUserAuthenticated }) => {
     const [formData, setFormData] = useState({
         email: "",
