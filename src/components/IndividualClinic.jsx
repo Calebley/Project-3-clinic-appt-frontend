@@ -13,7 +13,7 @@ import { BookAppt } from ".";
 const { Text } = Typography
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
-const IndividualClinic = ({authUser: {sessUser}}) => {
+const IndividualClinic = ({authUser: {id}}) => {
     const[oneClinic, setOneClinic] = useState([])
     const { clinicId } = useParams()
 
@@ -52,7 +52,7 @@ const IndividualClinic = ({authUser: {sessUser}}) => {
             {/* <p icon={<UserOutlined />}><strong>Doctor:</strong> {clinicById.doctorname}</p>
             <p><strong>Education:</strong> {clinicById.education}</p>
             <p><strong>Specialisation:</strong> {clinicById.specialisation}</p> */}
-            <p><Link to={`/appt/${oneClinic._id}/${sessUser.id}`}>Book appointment</Link></p>
+            <p><Link to={`/appt/${oneClinic._id}/${id}`}>Book appointment</Link></p>
         </div>
 
     )

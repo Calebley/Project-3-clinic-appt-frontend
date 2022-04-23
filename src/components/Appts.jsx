@@ -11,7 +11,7 @@ const Appointments = () => {
     const [appts, setAppts] = useState([])
 
     useEffect(() => {
-        fetch(urlcat(BACKEND, "/appt"))
+        fetch(urlcat(BACKEND, "/appt/"))
         .then((response) => response.json())
         .then((data) => setAppts(data))
     }, [appts.length])
