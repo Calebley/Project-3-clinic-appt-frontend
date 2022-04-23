@@ -1,14 +1,26 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import PropTypes from 'prop-types';
 import { getAppointments } from "../actions/appointments"
 import AppointmentItems from "./ApptItems"
+import urlcat from "urlcat";
 
+const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
-const Appointments = ({getAppointments, appointment: {appointments}}) => {
+const Appointments = () => {
+    const [appts, setAppts] = useState([])
+
     useEffect(() => {
-        getAppointments()
-    }, [getAppointments])
+        fetch(urlcat(BACKEND, "/appt"))
+        .then((response) => response.json())
+        .then((data) => setAppts(data))
+    }, [appts.length])
+
+    console.log(appts)
+
+    // useEffect(() => {
+    //     getAppointments()
+    // }, [getAppointments])
 
     return(
         <div className="appt-container">
@@ -17,9 +29,9 @@ const Appointments = ({getAppointments, appointment: {appointments}}) => {
             </div>
             <div class="appt-details">
                 <br />
-                {appointments !== null && appointments.appointments.length !== 0 ? (
+                {appts !== null && appts.length !== 0 ? (
                     <div class="details">
-                        <AppointmentItems appointment={appointments.appointments} />
+                        <AppointmentItems appointment={appts} />
                     </div>
                 ) : (
                     <h4>No appointments found</h4>

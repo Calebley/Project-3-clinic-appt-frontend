@@ -56,19 +56,25 @@ export const register = ({ username, email, password }) => async dispatch => {
 
 //Login User
 export const login = (email, password) => async (dispatch) => {
-    const config = {
-        headers: {
+    const config =  {
             "Content-Type": "application/json"
         }
-    }
+    
     const body = JSON.stringify({ email, password })
     try {
         const url = urlcat(BACKEND, "/login")
-        const res = await axios.post(url, body, config)
+        const response = await fetch(url, {
+            method: "POST",
+            credentials: 'include',  
+            headers: {
+            "Content-Type": "application/json"
+        }, body: JSON.stringify({ email, password })})
+       
+        const newResponse = await response.json()
 
         dispatch({
             type: LOGIN_USER_SUCCESS,
-            payload: res.data
+            payload: newResponse.data
         })
         dispatch(loadUser())
     } catch (err) {

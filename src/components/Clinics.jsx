@@ -18,7 +18,7 @@ const Clinics = () => {
         fetch(urlcat(BACKEND, "/clinic"))
         .then((response) => response.json())
         .then((data) => setClinics(data))
-    }, [])
+    }, [clinics.length])
 
 
     // useEffect(() => {
@@ -46,7 +46,7 @@ console.log(clinics)
                                 <p>{clinic.name}</p>
                                 <p>{clinic.address}</p>
                                 <p>{clinic.doctorname}</p>
-                                <p><small>Click for more details</small></p>
+                                <p style={{ color: "blue"}}><small>Click for more details</small></p>
                             </Card>
                             </Link>
                         </Col>

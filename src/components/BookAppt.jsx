@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -10,11 +10,19 @@ import urlcat from "urlcat";
 import { useNavigate } from "react-router";
 
 
+
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
 const BookAppt = () => {
-    
+    const[oneClinic, setOneClinic] = useState([])
     const { clinicid, userid } = useParams()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        fetch(urlcat(BACKEND, `/clinic/${clinicid}`))
+        .then((response) => response.json())
+        .then((data) => setOneClinic(data))
+    },[])
 
     const [formData, setFormData] = useState({
         patientname:"",
@@ -41,18 +49,17 @@ const BookAppt = () => {
         [e.target.name]: e.target.value
     })
 
-    const navigate = useNavigate()
-
-    const onSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const newAppt = {...formData}
 
         const url = urlcat(BACKEND, `/appt/${clinicid}/${userid}`)
         
-        fetch(url, {
+        await fetch(url, {
             method: "POST",
             body: JSON.stringify(newAppt),
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -61,7 +68,7 @@ const BookAppt = () => {
             console.log(error)
             return
         })
-        setFormData({
+        .then(setFormData({
             patientname:"",
             dateofbirth:"",
             gender:"",
@@ -70,12 +77,14 @@ const BookAppt = () => {
             description:"",
             clinicid,
             userid
-        })
+        }))
+        console.log(url)
         console.log(newAppt)
-        navigate("/")
+        navigate("/appointment")
+        alert("Appointment successfully booked!")
     }
 
-    // const handleSubmit = event => {
+    // const handleSubmit = (event) => {
     //     event.preventDefault()
     //     const newAppt = {
     //         patientname: formData.patientname,
@@ -91,18 +100,19 @@ const BookAppt = () => {
     //     console.log(url)
     //     console.log(newAppt)
     //     axios.post(url, newAppt)
+    //     navigate("/appointment")
     // }
     
 return(
     <div className="booking-container">
          <h1>Book Appointment</h1>
          <div className="appt-clinic">
-            <p className="clinic">clinic 1</p>
+            <p className="clinic">{oneClinic.name}</p>
          </div>
         <div className="booking-details-container">
-         <form onSubmit= {onSubmit
+         <form onSubmit= {handleSubmit}
             //  addAppointment(clinicById._id, sessUser.id, formData)
-         }>
+         >
              Patient name:
              <div className="form-group">
                  <input type="text" name="patientname" value={patientname} onChange={e => onChange(e)} />
@@ -127,7 +137,7 @@ return(
              <div className="form-group">
                  <textarea placeholder="Illness description" name="description" value={description} onChange={e => onChange(e)} ></textarea>
              </div>
-             <input type="submit" value="Submit" />
+             <button className= "submit" type="submit">Submit</button>
              <Link to="/clinics" type="submit">Go back</Link>
          </form>
          </div>
