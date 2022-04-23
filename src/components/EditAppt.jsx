@@ -6,7 +6,7 @@ import urlcat from "urlcat"
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 const EditAppt = () => {
     
-    const { bookingId } = useParams()
+    const { apptId } = useParams()
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -18,13 +18,45 @@ const EditAppt = () => {
         description:""
     })
 
+    // useEffect(() => {
+    //     async function fetchData() {
+    //     const url = urlcat(BACKEND, `/appt/${apptId}`)
+    //       const response = await fetch(url);
+      
+    //       if (!response.ok) {
+    //         const message = `An error has occurred: ${response.statusText}`;
+    //         window.alert(message);
+    //         return;
+    //       }
+      
+    //       const record = await response.json();
+    //       if (!record) {
+    //         window.alert(`Record with id ${apptId} not found`);
+    //         return;
+    //       }
+      
+    //       setFormData(record);
+    //     }
+      
+    //     fetchData();
+      
+    //     return;
+    //   }, [formData]);
+
     useEffect(() => {
-        const id = bookingId.toString()
-        const url = urlcat(BACKEND, `/appt/${id}`)
-        fetch(url)
-        .then((response) => response.json())
-        .then((data) => setFormData(data))
+            const url = urlcat(BACKEND, `/appt/edit/${apptId}`)
+
+        async function fetchData() {
+            fetch(url,{credentials: 'include'})
+                .then((response) => response.json())
+                .then(data => setFormData(data))       
+
+        }
+        
+        fetchData()
     }, [])
+
+//     console.log(formData)
 
     // useEffect(() => {
     //     getAppointmentById()
@@ -52,12 +84,12 @@ const EditAppt = () => {
         [e.target.name]: e.target.value
     })
 
-    const onSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault()
-        const id = bookingId.toString()
-        const url = urlcat(BACKEND, `/appt/update/${id}`)
+        const url = urlcat(BACKEND, `/appt/${apptId}`)
         fetch(url, {
             method: "PUT",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -66,7 +98,7 @@ const EditAppt = () => {
         .then((response) => response.json())
         .then((data) => console.log(data))
 
-        navigate("/appointment")
+        navigate("/")
     }
 
     return(
@@ -74,7 +106,7 @@ const EditAppt = () => {
             <div className="edit-heading">
                 <h1>Edit appointment</h1>
             </div>
-            <form onSubmit={e => onSubmit(e)}>
+            <form onSubmit={e => handleSubmit(e)}>
             Patient name:
              <div className="form-group">
                  <input type="text" name="patientname" value={patientname} onChange={e => onChange(e)} />

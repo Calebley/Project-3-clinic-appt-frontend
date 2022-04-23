@@ -24,7 +24,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Loginpage />} ></Route>
         <Route path="/signup" element={<UserSignup />}></Route>
-        <Route path="/editappt" element={<EditAppt />}></Route>
+        <Route path="/appt/edit/:apptId" element={<EditAppt />}></Route>
         <Route path="/appt/:clinicid/:userid" element={<BookAppt />}></Route>
         </Routes>
       </Provider>

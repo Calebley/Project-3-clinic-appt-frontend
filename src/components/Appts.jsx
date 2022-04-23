@@ -7,11 +7,11 @@ import urlcat from "urlcat";
 
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"
 
-const Appointments = () => {
+const Appointments = ({authUser: {id}}) => {
     const [appts, setAppts] = useState([])
 
     useEffect(() => {
-        fetch(urlcat(BACKEND, "/appt/"))
+        fetch(urlcat(BACKEND, `/appt/${id}`))
         .then((response) => response.json())
         .then((data) => setAppts(data))
     }, [appts.length])
@@ -44,11 +44,13 @@ const Appointments = () => {
 
 Appointments.propTypes = {
     getAppointments: PropTypes.func.isRequired,
-    appointment: PropTypes.object.isRequired
+    appointment: PropTypes.object.isRequired,
+    authUser: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    appointment: state.appointment
+    appointment: state.appointment,
+    authUser: state.authUser
 })
 
 export default connect(mapStateToProps, {getAppointments}) (Appointments)

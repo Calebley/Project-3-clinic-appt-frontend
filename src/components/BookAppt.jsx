@@ -76,7 +76,7 @@ const BookAppt = () => {
             date:"",
             description:"",
             clinicid,
-            userid
+            userid,
         }))
         console.log(url)
         console.log(newAppt)
