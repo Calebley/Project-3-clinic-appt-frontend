@@ -60,13 +60,4 @@ console.log(clinics)
     )
 }
 
-Clinics.propTypes = {
-    getClinics: PropTypes.func.isRequired,
-    clinic: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-    clinic: state.clinic
-})
-
-export default connect(mapStateToProps, {getClinics}) (Clinics)
+export default Clinics

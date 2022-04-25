@@ -49,9 +49,6 @@ const AppointmentItems = ({appointment}) => {
     )
 }
 
-AppointmentItems.propTypes = {
-    appointment: PropTypes.array.isRequired,
-    deleteAppointment: PropTypes.func.isRequired
-}
 
-export default connect(null, {deleteAppointment})(AppointmentItems)
+
+export default AppointmentItems

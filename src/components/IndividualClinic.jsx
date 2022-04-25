@@ -24,13 +24,6 @@ const IndividualClinic = ({authUser: {id}}) => {
     },[])
     
 
-    // useEffect(() => {
-    //     getClinicById(clinicId)
-    // }, [getClinicById, clinicId])
-
-    // console.log(store.getState())
-    // console.log(clinicId)
-
     const info = [
         {title: "Doctor", value: `${oneClinic.doctorname}`, icon: <UserOutlined />},
         {title: "Education", value: `${oneClinic.education}`, icon: <ReadOutlined />},
@@ -59,14 +52,11 @@ const IndividualClinic = ({authUser: {id}}) => {
 }
 
 IndividualClinic.propTypes = {
-    getClinicById: PropTypes.func.isRequired,
-    clinic: PropTypes.object.isRequired,
     authUser: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    clinic: state.clinic,
     authUser: state.authUser
 })
 
-export default connect(mapStateToProps, {getClinicById}) (IndividualClinic)
+export default connect(mapStateToProps) (IndividualClinic)

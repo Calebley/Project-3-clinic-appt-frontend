@@ -4,12 +4,11 @@ import './index.css';
 import "antd/dist/antd.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserNav, UserSignup, ProfilePage, CreateProfile, Loginpage, Clinics, IndividualClinic, Appointments, BookApptForm, BookAppt, EditAppt } from './components';
+import { blue } from "@ant-design/colors"
 
 //Redux
 import { Provider } from "react-redux"
 import store from "./store"
-import setAuthToken from './utils/setAuthToken';
-import { loadUser } from './actions/authUser';
 
 function App() {
 
