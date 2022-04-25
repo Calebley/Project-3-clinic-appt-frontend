@@ -24,6 +24,8 @@ const BookAppt = () => {
         .then((data) => setOneClinic(data))
     },[])
 
+    console.log(oneClinic)
+   
     const [formData, setFormData] = useState({
         patientname:"",
         dateofbirth:"",
@@ -41,7 +43,7 @@ const BookAppt = () => {
         gender,
         email,
         date,
-        description
+        description,
     } = formData
 
     const onChange = e => setFormData({
@@ -76,7 +78,7 @@ const BookAppt = () => {
             date:"",
             description:"",
             clinicid,
-            userid,
+            userid
         }))
         console.log(url)
         console.log(newAppt)
@@ -145,15 +147,7 @@ return(
 )
 }
 
-BookAppt.propTypes = {
-    addAppointment: PropTypes.func.isRequired,
-    clinic: PropTypes.object.isRequired,
-    authUser: PropTypes.object.isRequired
-}
 
-const mapStateToProps = state => ({
-    clinic: state.clinic,
-    authUser: state.authUser
-})
 
-export default connect(mapStateToProps, {addAppointment}) (BookAppt)
+
+export default BookAppt

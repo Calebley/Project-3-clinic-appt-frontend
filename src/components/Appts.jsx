@@ -43,14 +43,11 @@ const Appointments = ({authUser: {id}}) => {
 }
 
 Appointments.propTypes = {
-    getAppointments: PropTypes.func.isRequired,
-    appointment: PropTypes.object.isRequired,
     authUser: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    appointment: state.appointment,
     authUser: state.authUser
 })
 
-export default connect(mapStateToProps, {getAppointments}) (Appointments)
+export default connect(mapStateToProps) (Appointments)

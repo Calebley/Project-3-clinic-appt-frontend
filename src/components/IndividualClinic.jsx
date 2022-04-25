@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
-import { getClinicById } from "../actions/clinicInfo";
-import store from "../store"
-import { Clinics } from ".";
 import { UserOutlined, ReadOutlined, SearchOutlined, ShopOutlined  } from "@ant-design/icons";
 import { Col, Row, Typography, Select } from 'antd';
 import urlcat from "urlcat";

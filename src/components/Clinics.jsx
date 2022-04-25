@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import { Card, Row, Col, Input } from "antd"
 import { getClinics } from "../actions/clinicInfo"
-import ClinicItems from "./ClinicItems"
+
 import {connect} from "react-redux"
 import store from "../store"
 import clinic from "../reducers/clinic"

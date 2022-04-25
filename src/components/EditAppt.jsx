@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { addAppointment, getAppointmentById } from "../actions/appointments"
 import { useParams, useNavigate } from "react-router"
 import urlcat from "urlcat"
 
@@ -123,7 +122,7 @@ const EditAppt = () => {
              <div className="form-group">
                  <input type="email" name="email" value={email} onChange={e => onChange(e)} />
              </div>
-             Date:
+             Appointment date:
              <div className="form-group">
                  <input type="date" name="date" value={date} onChange={e => onChange(e)} />
              </div>

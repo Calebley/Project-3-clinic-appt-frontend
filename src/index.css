@@ -28,12 +28,18 @@ left: 44%
 
 .logo-container, .user-container, .clinic-container, .clinic-info, .appt-container, .profile-container {
   text-align: center;
+  padding: 10px
 }
 
 .booking-container, .edit-container, .form-group {
   text-align: center;
   align-self: center;
-  padding: 1px;
+  padding: 5px;
 }
 
+.appt-card-container {
+  position: relative;
+  left: 34%;
+  padding: 1px;
+}
 

@@ -1,6 +1,5 @@
 import axios from "axios"
 import urlcat from "urlcat"
-import setAuthToken from "../utils/setAuthToken"
 import { REGISTER_USER_SUCCESS, REGISTER_USER_FAIL, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, USER_LOADED, AUTH_USER_ERROR } from "./types"
 
 const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:3002"

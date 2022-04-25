@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
-import {connect} from "react-redux"
 import Moment from "react-moment"
-import { deleteAppointment, getAppointmentById } from "../actions/appointments"
 import urlcat from "urlcat"
 import { Card, Row, Col, Input } from "antd"
 import { useNavigate } from "react-router"
@@ -30,18 +27,23 @@ const AppointmentItems = ({appointment}) => {
 
 
     const appointments = appts.map(appt => (
-        <Row gutter={[32]} className="clinic-card-container">
+        <div className="appt-desc-container">
+            <Row gutter={[16]} className="appt-card-container">
         <Col span={8} key={appt._id} className="appt-items-container">
             <Card hoverable>
-            <p><strong>Appointment date:</strong> <Moment format="DD/MM/YYYY">{appt.date}</Moment></p>
-            <p><strong>Booking id:</strong> {appt.bookingId}</p>
-            <p><strong>Description:</strong>{appt.description}</p>
+            <p><strong>Clinic: </strong>{appt.clinicname}</p>
+            <p><strong>Appointment date: </strong> <Moment format="DD/MM/YYYY">{appt.date}</Moment></p>
+            <p><strong>Booking id: </strong> {appt.bookingId}</p>
+            <p><strong>Description: </strong>{appt.description}</p>
             <input onClick={() => handleDelete(appt._id)} type="button" value="Cancel" style={{ color: "red"}} />
             <Link to={`/appt/edit/${appt._id}`}><button>Edit</button></Link>
             </Card>
         </Col>
         </Row>
+        </div>
+       
     ))
+
     return (
         <div>
             {appointments}
