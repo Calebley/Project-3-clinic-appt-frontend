@@ -24,7 +24,7 @@ const UserNav = () => {
                 <div className="nav-container">
                     <div className="logo-container">
                         <Typography.Title level={2} className="logo">
-                            Book a doctor
+                            Book My doctor
                         </Typography.Title>
                     </div>
                     <Menu theme="light">
